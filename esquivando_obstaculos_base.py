@@ -5,7 +5,7 @@
 # Codigo base v1.0
 #
 # Descripcion: juego base 2D donde un personaje debe esquivar
-# autos en un escenario urbano. Este es el punto de partida
+# Enemigos en un escenario urbano. Este es el punto de partida
 # del proyecto: a partir de aca cada grupo agrega las consignas
 # (imagenes propias, salto, animacion de fondo, barra de
 # energia, contador de kilometros, mensajes de fin de juego, etc.)
@@ -21,20 +21,20 @@ ANCHO_PANTALLA = 1300
 ALTO_PANTALLA = 500
 FPS = 60
 
-COLOR_AUTO = (220, 40, 40)
+COLOR_ENEMIGO = (220, 40, 40)
 COLOR_TEXTO = (255, 255, 255)
 COLOR_NEGRO = (0, 0, 0)
 COLOR_ALERTA = (255, 60, 60)
 COLOR_HITBOX = (0, 0, 255)  # Color azul para las hitboxes
 
 # --- AJUSTES DE HITBOX (Márgenes internos para mayor precisión de colisión) ---
-PERSONAJE_HITBOX_OFFSET_X = 0  # Píxeles a recortar a la izquierda y derecha
-PERSONAJE_HITBOX_OFFSET_Y = 0  # Píxeles a recortar arriba y abajo
+PERSONAJE_HITBOX_OFFSET_X = 45  # Píxeles a recortar a la izquierda y derecha
+PERSONAJE_HITBOX_OFFSET_Y = 45  # Píxeles a recortar arriba y abajo
 
-AUTO_HITBOX_OFFSET_X = 0      # Píxeles a recortar a los lados
-AUTO_HITBOX_OFFSET_Y = 0       # Píxeles a recortar arriba y abajo
+ENEMIGO_HITBOX_OFFSET_X = 0      # Píxeles a recortar a los lados
+ENEMIGO_HITBOX_OFFSET_Y = 0       # Píxeles a recortar arriba y abajo
 
-VELOCIDAD_AUTO = 6
+VELOCIDAD_ENEMIGO = 6
 VELOCIDAD_FONDO = 2
 
 # ---------- Variables globales ----------
@@ -45,14 +45,14 @@ fondo_x = 0
 # Variables físicas para el salto
 esta_saltando = False
 velocidad_y = 0
-GRAVEDAD = 0.5
+GRAVEDAD = 0.7
 FUERZA_SALTO = -16
 y_suelo = personaje_y
 
-auto_x = ANCHO_PANTALLA
-auto_y = ALTO_PANTALLA - 220
-auto_ancho = 80
-auto_alto = 80
+Enemigo_x = ANCHO_PANTALLA
+Enemigo_y = ALTO_PANTALLA - 220
+Enemigo_ancho = 80
+Enemigo_alto = 80
 
 mostrar_reglas = True
 
@@ -140,35 +140,35 @@ def dibujar_personaje(pantalla):
     return rect_personaje
 
 
-def dibujar_auto(pantalla):
-    """Dibuja el auto que se desplaza hacia el personaje (por ahora, un
+def dibujar_Enemigo(pantalla):
+    """Dibuja el Enemigo que se desplaza hacia el personaje (por ahora, un
     rectangulo rojo). Consigna 1 del proyecto: reemplazar por una imagen
-    de auto real."""
+    de Enemigo real."""
     # Rectángulo para la representación visual (tamaño completo)
-    rect_visual = pygame.Rect(auto_x, auto_y, auto_ancho, auto_alto)
-    pygame.draw.rect(pantalla, COLOR_AUTO, rect_visual)
+    rect_visual = pygame.Rect(Enemigo_x, Enemigo_y, Enemigo_ancho, Enemigo_alto)
+    pygame.draw.rect(pantalla, COLOR_ENEMIGO, rect_visual)
     
     # Rectángulo real de colisión (hitbox reducida)
     rect_hitbox = pygame.Rect(
-        auto_x + AUTO_HITBOX_OFFSET_X,
-        auto_y + AUTO_HITBOX_OFFSET_Y,
-        auto_ancho - (AUTO_HITBOX_OFFSET_X * 2),
-        auto_alto - (AUTO_HITBOX_OFFSET_Y * 2)
+        Enemigo_x + ENEMIGO_HITBOX_OFFSET_X,
+        Enemigo_y + ENEMIGO_HITBOX_OFFSET_Y,
+        Enemigo_ancho - (ENEMIGO_HITBOX_OFFSET_X * 2),
+        Enemigo_alto - (ENEMIGO_HITBOX_OFFSET_Y * 2)
     )
     
-    # Dibujar la hitbox del auto con un contorno azul (grosor 5)
+    # Dibujar la hitbox del Enemigo con un contorno azul (grosor 5)
     pygame.draw.rect(pantalla, COLOR_HITBOX, rect_hitbox, 5)
     
     return rect_hitbox
 
 
-def mover_auto():
-    """Mueve el auto hacia la izquierda. Si sale de la pantalla por el lado
+def mover_Enemigo():
+    """Mueve el Enemigo hacia la izquierda. Si sale de la pantalla por el lado
     izquierdo, vuelve a aparecer del lado derecho (consigna 4 del proyecto)."""
-    global auto_x
-    auto_x -= VELOCIDAD_AUTO
-    if auto_x < -auto_ancho:
-        auto_x = ANCHO_PANTALLA
+    global Enemigo_x
+    Enemigo_x -= VELOCIDAD_ENEMIGO
+    if Enemigo_x < -Enemigo_ancho:
+        Enemigo_x = ANCHO_PANTALLA
 
 
 def cargar_animacion(ruta_imagen, cantidad_frames):
@@ -228,14 +228,14 @@ while juego_activo:
     if mostrar_reglas:
         dibujar_reglas(pantalla, fuente)
     else:
-        mover_auto()
+        mover_Enemigo()
         rect_personaje = dibujar_personaje(pantalla)
-        rect_auto = dibujar_auto(pantalla)
+        rect_Enemigo = dibujar_Enemigo(pantalla)
 
         # Deteccion simple de colision. Consigna 7 del proyecto:
         # reemplazar este aviso por el texto "JUEGO TERMINADO" pausando
         # el juego.
-        if rect_personaje.colliderect(rect_auto):
+        if rect_personaje.colliderect(rect_Enemigo):
             texto_choque = fuente_grande.render("CHOQUE!", True, COLOR_ALERTA)
             pantalla.blit(texto_choque, (ANCHO_PANTALLA // 2 - 60, 90))
 
