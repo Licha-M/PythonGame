@@ -2,7 +2,7 @@
 
 > Versión en español: [docs/es/LEEME.md](docs/es/LEEME.md)
 
-A 2D side-scrolling action game built with Python and Pygame, developed as a school project at **Institución Educativa Sagrado Corazón de Jesús**. The player controls a character who must dodge and defeat enemies across an endless urban landscape, with two distinct gameplay modes and a full suite of animations.
+A 2D side-scrolling action game built with Python and Pygame, developed as a school project at **Institución Educativa Sagrado Corazón de Jesús**. The player controls a knight who must dodge and defeat enemies across a castle landscape, with two distinct gameplay modes and a full suite of animations.
 
 ---
 
@@ -32,7 +32,7 @@ A 2D side-scrolling action game built with Python and Pygame, developed as a sch
 
 ## Overview
 
-**Far, Far Away** is a side-scrolling runner/fighter game where the player character runs through a continuously scrolling city background and must survive against incoming enemies. Players can jump over enemies or activate an energy mode to destroy them on contact. The game tracks distance traveled in meters and offers a limited-distance mode where the objective is to reach the finish line.
+**Far, Far Away** is a side-scrolling runner/fighter game where the player controls a knight running through a continuously scrolling castle landscape and must survive against incoming enemies. Players can jump over enemies or activate an energy mode to destroy them on contact. The game tracks distance traveled in meters and offers a limited-distance mode where the objective is to reach the finish line.
 
 The project was built as an educational exercise in Python game development, covering topics such as sprite sheet animation, physics simulation, hitbox-based collision detection, and state-machine game logic.
 
@@ -72,7 +72,7 @@ The project was built as an educational exercise in Python game development, cov
 Enemies spawn indefinitely. The goal is to survive as long as possible. There is no finish line; the game ends only when the player is hit without energy active.
 
 **Limited Mode**  
-The player must travel **5,000 meters** to reach the goal. As the character approaches the finish, an animated trophy appears on screen. Touching it triggers the victory sequence. Enemy spawning stops once the trophy appears.
+The player must travel **5,000 meters** to reach the goal. As the knight approaches the finish, an animated trophy appears on screen. Touching it triggers the victory sequence. Enemy spawning stops once the trophy appears.
 
 ### Energy Bar
 
@@ -81,7 +81,7 @@ The energy bar is displayed in the upper-right corner of the screen and fills pa
 When activated with `Shift`:
 - The bar drains by **10%** per enemy contact.
 - Any enemy touched is destroyed with a fade-out animation.
-- A random attack animation plays on the character.
+- A random attack animation plays on the knight.
 - When the bar reaches 0%, attack mode deactivates automatically.
 
 ### Enemies
@@ -104,7 +104,7 @@ PythonGame/
 ├── far_far_away.py          # Main game file (all logic)
 ├── imgs/
 │   ├── background/
-│   │   └── Background-big.jpg   # City scrolling background
+│   │   └── Background-big.jpg   # Castle landscape background
 │   ├── sprites/
 │   │   ├── RUN.png              # Running animation   (8 frames)
 │   │   ├── JUMP.png             # Jump animation      (5 frames)
