@@ -37,14 +37,14 @@ COLOR_BARRA_ACTIVA  = (255, 80, 30)       # Naranja/rojo mientras se gasta
 COLOR_BARRA_TEXTO   = (255, 255, 255)
 
 # --- AJUSTES DE HITBOX (Márgenes internos para mayor precisión de colisión) ---
-PERSONAJE_HITBOX_OFFSET_X = 45  # Píxeles a recortar a la izquierda y derecha
+PERSONAJE_HITBOX_OFFSET_X = 60  # Píxeles a recortar a la izquierda y derecha
 PERSONAJE_HITBOX_OFFSET_Y = 45  # Píxeles a recortar arriba y abajo
 
 ENEMIGO_HITBOX_OFFSET_X = 10      # Píxeles a recortar a los lados
 ENEMIGO_HITBOX_OFFSET_Y = 0       # Píxeles a recortar arriba y abajo
 
 VELOCIDAD_ENEMIGO = 9
-VELOCIDAD_FONDO = 2
+VELOCIDAD_FONDO = 6
 
 # --- AJUSTES DE APARICION DE ENEMIGOS ---
 # Separacion minima en pixeles entre el borde derecho del ultimo enemigo
