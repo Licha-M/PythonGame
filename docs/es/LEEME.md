@@ -1,6 +1,6 @@
 # Far, Far Away
 
-Un juego de acción de desplazamiento lateral en 2D construido con Python y Pygame, desarrollado como proyecto escolar en la **Institución Educativa Sagrado Corazón de Jesús**. El jugador controla a un personaje que debe esquivar y derrotar enemigos a lo largo de un paisaje urbano en desplazamiento continuo, con dos modos de juego distintos y un conjunto completo de animaciones.
+Un juego de acción de desplazamiento lateral en 2D construido con Python y Pygame, desarrollado como proyecto escolar en la **Institución Educativa Sagrado Corazón de Jesús**. El jugador controla a un caballero que debe esquivar y derrotar enemigos a lo largo de un paisaje de castillo en desplazamiento continuo, con dos modos de juego distintos y un conjunto completo de animaciones.
 
 > Versión en inglés: [README.md](../../README.md)
 
@@ -32,7 +32,7 @@ Un juego de acción de desplazamiento lateral en 2D construido con Python y Pyga
 
 ## Descripción general
 
-**Far, Far Away** es un juego de tipo runner/lucha en desplazamiento lateral donde el personaje corre por un fondo urbano que se mueve de forma continua y debe sobrevivir a los enemigos que vienen desde la derecha. Los jugadores pueden saltar sobre los enemigos o activar un modo de energía para destruirlos al contacto. El juego registra la distancia recorrida en metros y ofrece un modo de distancia limitada cuyo objetivo es llegar a la línea de meta.
+**Far, Far Away** es un juego de tipo runner/lucha en desplazamiento lateral donde el jugador controla a un caballero que corre por un fondo de paisaje de castillo que se mueve de forma continua y debe sobrevivir a los enemigos que vienen desde la derecha. Los jugadores pueden saltar sobre los enemigos o activar un modo de energía para destruirlos al contacto. El juego registra la distancia recorrida en metros y ofrece un modo de distancia limitada cuyo objetivo es llegar a la línea de meta.
 
 El proyecto fue desarrollado como ejercicio educativo en programación de videojuegos con Python, abarcando temas como animación con sprite sheets, simulación de físicas, detección de colisiones por hitboxes y lógica de juego basada en máquina de estados.
 
@@ -72,7 +72,7 @@ El proyecto fue desarrollado como ejercicio educativo en programación de videoj
 Los enemigos aparecen de forma indefinida. El objetivo es sobrevivir el mayor tiempo posible. No hay línea de meta; el juego termina únicamente cuando el jugador es golpeado sin energía activa.
 
 **Modo Con Límites (Limited)**  
-El jugador debe recorrer **5.000 metros** para llegar a la meta. A medida que el personaje se acerca al final, aparece en pantalla un trofeo animado. Tocarlo activa la secuencia de victoria. La generación de enemigos se detiene una vez que aparece el trofeo.
+El jugador debe recorrer **5.000 metros** para llegar a la meta. A medida que el caballero se acerca al final, aparece en pantalla un trofeo animado. Tocarlo activa la secuencia de victoria. La generación de enemigos se detiene una vez que aparece el trofeo.
 
 ### Barra de energía
 
@@ -81,7 +81,7 @@ La barra de energía se muestra en la esquina superior derecha y se carga de for
 Al activarse con `Shift`:
 - La barra se vacía **10%** por cada enemigo tocado.
 - Cualquier enemigo con el que se colisione es destruido con una animación de desvanecimiento.
-- Se reproduce una animación de ataque aleatoria sobre el personaje.
+- Se reproduce una animación de ataque aleatoria sobre el caballero.
 - Cuando la barra llega a 0%, el modo ataque se desactiva automáticamente.
 
 ### Enemigos
@@ -104,7 +104,7 @@ PythonGame/
 ├── far_far_away.py          # Archivo principal del juego (toda la lógica)
 ├── imgs/
 │   ├── background/
-│   │   └── Background-big.jpg   # Fondo urbano en desplazamiento
+│   │   └── Background-big.jpg   # Fondo de paisaje de castillo
 │   ├── sprites/
 │   │   ├── RUN.png              # Animación de correr    (8 frames)
 │   │   ├── JUMP.png             # Animación de salto     (5 frames)
@@ -159,7 +159,7 @@ posicion_y  += velocidad_y
 | `GRAVEDAD_RAPIDA` | 2.2 | Gravedad extra al mantener Abajo durante el salto |
 | `FUERZA_SALTO` | -17 | Velocidad vertical inicial al saltar |
 
-La posición Y del suelo (`y_suelo`) se calcula una sola vez al inicio y se usa como umbral de aterrizaje. La animación de muerte también usa este sistema para que el personaje caiga al suelo antes de reproducir los frames de muerte.
+La posición Y del suelo (`y_suelo`) se calcula una sola vez al inicio y se usa como umbral de aterrizaje. La animación de muerte también usa este sistema para que el caballero caiga al suelo antes de reproducir los frames de muerte.
 
 ### Generación de enemigos
 
@@ -177,7 +177,7 @@ Las hitboxes tienen un margen interior respecto al bounding box del sprite para 
 
 | Entidad | Offset X | Offset Y |
 |---|---|---|
-| Personaje | 45 px por lado | 45 px por lado |
+| Caballero | 45 px por lado | 45 px por lado |
 | Enemigo | 10 px por lado | 0 px |
 
 Activar `MOSTRAR_HITBOXES = True` dibuja los rectángulos de colisión activos en azul, lo cual es útil para ajustar estos valores.
